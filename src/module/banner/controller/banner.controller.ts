@@ -60,7 +60,7 @@ export const updateBanner = asyncHandler(async (req, res, next) => {
   if (!existingBanner) {
     throw new ErrorResponse("Banner not found", 404);
   }
-  
+
 
   let imageUrl = data.imageUrl !== undefined ? data.imageUrl : existingBanner.imageUrl;
   if (req.file) {
