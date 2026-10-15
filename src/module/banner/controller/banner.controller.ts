@@ -61,12 +61,12 @@ export const updateBanner = asyncHandler(async (req, res, next) => {
     throw new ErrorResponse("Banner not found", 404);
   }
 
-
   let imageUrl = data.imageUrl !== undefined ? data.imageUrl : existingBanner.imageUrl;
   if (req.file) {
     const uploadResult = await uploadToCloudinary(req.file.buffer, "banners");
     imageUrl = uploadResult.secure_url;
   }
+
 
   const banner = await prisma.banner.update({
     where: { id },
